@@ -8,7 +8,7 @@ $(document).ready(function(){
 		$nextImg,
 		$imageList,
 		$sliderWidth,
-		current = 0;
+		current = 0,
 		
 		library = [
 			{ src: "images/image1.jpg" }, 
@@ -51,13 +51,28 @@ $(document).ready(function(){
 		
 		$currImg.animate({
 			left: "-" + $sliderWidth
-			}, 1000, function() {
-	  	});
+			},  {
+			duration: 1000,
+			start: function() {
+               $(".nav").addClass("disable");
+            },
+            complete: function() {
+               $(".nav").removeClass("disable");
+            }
+        });
+
 
 		$nextImg.css({ "left": $sliderWidth + "px" })
 			.animate({
 				left: 0
-				}, 1000, function() {
+				}, {
+				duration: 1000,
+				start: function() {
+					$(".nav").addClass("disable");
+	            },
+	            complete: function() {
+	               $(".nav").removeClass("disable");
+	            }
 		  	});
 	}
 
@@ -68,13 +83,27 @@ $(document).ready(function(){
 
 		$currImg.animate({
 			left: $sliderWidth
-			}, 1000, function() {
+			}, {
+				duration: 1000,
+				start: function() {
+					$(".nav").addClass("disable");
+	            },
+	            complete: function() {
+	               $(".nav").removeClass("disable");
+	            }
 	  	});
 
 		$prevImg.css({ "left": "-" + $sliderWidth + "px" })
 			.animate({
 				left: 0
-				}, 1000, function() {
+				}, {
+				duration: 1000,
+				start: function() {
+					$(".nav").addClass("disable");
+	            },
+	            complete: function() {
+	               $(".nav").removeClass("disable");
+	            }
 		  	}); 
 	}
 	
